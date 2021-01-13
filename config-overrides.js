@@ -87,7 +87,7 @@ module.exports = override(
     // 重写css模块，增加css前缀补全，px转rem
     rewirePostcss(config, {
       plugins: () => [
-        require('postcss-flexbugs-fixes'),
+        // require('postcss-flexbugs-fixes'),
         require('postcss-preset-env')({
           autoprefixer: {
             // browsers: [
