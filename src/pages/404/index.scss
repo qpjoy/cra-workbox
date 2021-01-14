@@ -1,0 +1,29 @@
+.NotFound {
+  min-height: 100vh;
+  background: #fff;
+  > div {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    .img {
+      width: 60vw;
+      height: 350px;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    p {
+      color: #0b2f7c;
+      font-size: 50px;
+      margin-bottom: 0;
+    }
+    span {
+      font-size: 160px;
+      color: #ffbb00;
+      position: absolute;
+      top: -30px;
+      left: 0px;
+    }
+  }
+}

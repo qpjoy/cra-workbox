@@ -1,6 +1,7 @@
 import { ApolloProvider } from "@apollo/client";
 import React, { createContext, useReducer, useEffect } from "react";
 import reducer from "@/states/reducer";
+import Router from "@/router";
 
 export const CommonContext = createContext<any>(null);
 export const init = (initialState: any) => {
@@ -10,8 +11,12 @@ export const init = (initialState: any) => {
 const CommonProvider = (props: any) => {
   const { client } = props;
 
-  const initialState = {
+  const commonInfo = {
     version: "v.0.0.0.1",
+  };
+
+  const initialState = {
+    commonInfo,
     client,
   };
 
@@ -34,7 +39,9 @@ const CommonProvider = (props: any) => {
         commonDispatch: dispatch,
       }}
     >
-      <ApolloProvider client={client}>123321</ApolloProvider>
+      <ApolloProvider client={client}>
+        <Router />
+      </ApolloProvider>
     </CommonContext.Provider>
   );
 };

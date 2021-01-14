@@ -3,7 +3,13 @@ import { init } from "@/states/common";
 function reducer(state: any, action: any) {
   const { type, payload } = action;
   const initialState = { ...state };
-  console.log(initialState, action, " - - - - - - this is initialState");
+  const { commonInfo } = state;
+  console.log(
+    initialState,
+    action,
+    commonInfo,
+    " - - - - - - this is initialState"
+  );
 
   switch (type) {
     case "VERSION":
