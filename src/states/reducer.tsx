@@ -1,29 +1,22 @@
-import { init } from "@/states/common";
-
 function reducer(state: any, action: any) {
   const { type, payload } = action;
-  const initialState = { ...state };
-  const { commonInfo } = state;
-  console.log(
-    initialState,
-    action,
-    commonInfo,
-    " - - - - - - this is initialState"
-  );
 
   switch (type) {
+    case "LOCALE":
+      return {
+        ...state,
+        locale: payload.locale,
+      };
     case "VERSION":
       return {
         ...state,
-        version: action.version,
+        version: payload.version,
       };
     case "CLIENT":
       return {
         ...state,
-        client: action.client,
+        client: payload.client,
       };
-    case "RESET":
-      return init(payload);
     default:
       state = { ...state, ...action };
       return state;

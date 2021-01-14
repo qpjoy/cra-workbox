@@ -1,7 +1,6 @@
 import React, { Suspense, lazy, useContext, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
-import { CommonContext } from "@/states/common";
 import LayoutBox from "@/components/LayoutBox";
 import SuspenseBox from "@/components/SuspenseBox";
 import NotFound from "@/pages/404";
@@ -9,7 +8,6 @@ import NotFound from "@/pages/404";
 import Login from "@/pages/landing/login/editorLogin";
 
 function Router() {
-  const { commonInfo } = useContext(CommonContext);
   useEffect(() => {});
 
   return (

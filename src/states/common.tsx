@@ -1,12 +1,15 @@
 import { ApolloProvider } from "@apollo/client";
 import React, { createContext, useReducer, useEffect } from "react";
 import reducer from "@/states/reducer";
+import { IntlProvider } from "react-intl";
 import Router from "@/router";
 
+import i18n from "@/i18n";
+
 export const CommonContext = createContext<any>(null);
-export const init = (initialState: any) => {
-  return initialState;
-};
+// export const init = (initialState: any) => {
+//   return initialState;
+// };
 
 const CommonProvider = (props: any) => {
   const { client } = props;
@@ -17,10 +20,11 @@ const CommonProvider = (props: any) => {
 
   const initialState = {
     commonInfo,
+    locale: "en",
     client,
   };
 
-  const [state, dispatch] = useReducer(reducer, initialState, init);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   // setTimeout(() => {
   //   dispatch({
@@ -35,12 +39,13 @@ const CommonProvider = (props: any) => {
     <CommonContext.Provider
       value={{
         ...state,
-        a: "b",
         commonDispatch: dispatch,
       }}
     >
       <ApolloProvider client={client}>
-        <Router />
+        <IntlProvider locale={state.locale} messages={i18n[state.locale]}>
+          <Router />
+        </IntlProvider>
       </ApolloProvider>
     </CommonContext.Provider>
   );
